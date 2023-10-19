@@ -18,7 +18,7 @@ def bus_format(data, service_name=''):
 
 
 
-def login(correo, contrasena):
+def productos(correo, contrasena):
     con = sqlite3.connect('db/vise.db')
     cursor= con.cursor()
     query=f"""SELECT * FROM usuarios WHERE correo='{correo}' AND contrasena='{contrasena}'"""
@@ -36,7 +36,7 @@ sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server_address = ('localhost', 5000)
 sock.connect(server_address)
 
-message = b"00010sinit00001"
+message = b"00010sinitserv1"
 sock.sendall(message)
 status = sock.recv(4096)[10:12].decode('utf-8')
 
@@ -49,5 +49,3 @@ if status == 'OK':
         ans = login(data['correo'], data['contrasena'])
         response = bus_format(ans, str(client_name)).encode('utf-8')
         sock.send(response)
-    
-

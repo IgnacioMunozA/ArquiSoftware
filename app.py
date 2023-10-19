@@ -27,6 +27,7 @@ class App:
 
     def send_msg(self,msg,name='g7999'):
         req = bus_format(msg,name).encode('utf-8')
+        print("mensaje enviado: ",req)
         time.sleep(2)
         self.sock.sendall(req)
         return self.sock.recv(1024).decode('utf-8')
@@ -52,6 +53,7 @@ class App:
             elif option == '1':
                 res = self.login()
                 data = eval(res[12:])
+                user_type = data[4]
                 if res[10:12] == 'NK':
                     print("Servicio no está disponible")
                     pass
@@ -59,15 +61,14 @@ class App:
                     print("Usuario o contraseña incorrectos")
                     pass
                 else:
-                    print("Bienvenido {}".format(data['nombre']))
-                    return
+                    print("Sesión iniciada")
+                    break
             else:
                 print("Opción no válida")
-        self.menu(0)
+        self.menu(user_type)
 
     def menu(self, type_id):
         while True:
-            input("Presione enter para continuar")
             print("Menú de opciones: ")
             print("0. Salir")
             available_services = [
@@ -80,22 +81,23 @@ class App:
                 services[f'{i+1}'] = actual_service
                 print("Opcion{}:{}".format(i+1,actual_service['name']))
             print("0. Salir")
+            option = input('Ingrese una opción:')
             if option == '0':
                 return
             elif option in services:
                     service = services[option]
                     inputs={}
                     for i in range(len(service['inputs'])):
-                        input = service['inputs'][i]
-                        key = input['name']
-                        inputs[key]=input(input['message'])
+                        input_data = service['inputs'][i]
+                        key = input_data['name']
+                        inputs[key]=input(input_data['message'])
                     res = self.send_msg(inputs,service['id'])
                     print(res)
                     if res[10:12] == 'NK':
                         print("Servicio no está disponible")
                         pass
                     else:
-                        service['function'](res)
+                        service['id']
             else:
                 print("Opción no válida")
 
@@ -104,22 +106,22 @@ class App:
 if __name__ == "__main__":
     app = App(
         login_service={
-            'id': '00001',
+            'id': 'serv1',
             'name': 'Iniciar sesión',
             'inputs': [
                 {
-                    'name': 'email',
+                    'name': 'correo',
                     'message': 'Ingrese su email'
                 },
                 {
-                    'name': 'password',
+                    'name': 'contrasena',
                     'message': 'Ingrese su contraseña'
                 }
             ]
         },
         services=[
             {
-                'id': '00002',
+                'id': 'serv2',
                 'name': 'Ver productos',
                 'user_type': ['Admin', 'Empleado'],
                 'inputs': [
@@ -130,7 +132,7 @@ if __name__ == "__main__":
                 ]
             },
             {
-                'id': '00003',
+                'id': 'serv3',
                 'name': 'Agregar producto',
                 'user_type': ['Admin'],
                 'inputs': [
@@ -161,7 +163,7 @@ if __name__ == "__main__":
                 ]
             },
             {
-                'id': '00004',
+                'id': 'serv4',
                 'name': 'Ver usuarios',
                 'user_type': ['Admin'],
                 'inputs': [
@@ -172,7 +174,7 @@ if __name__ == "__main__":
                 ]
             },
             {
-                'id': '00005',
+                'id': 's5',
                 'name': 'Eliminar producto',
                 'user_type': ['Admin'],
                 'inputs': [
