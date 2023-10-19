@@ -80,10 +80,9 @@ class App:
                 actual_service = available_services[i]
                 services[f'{i+1}'] = actual_service
                 print("Opcion{}:{}".format(i+1,actual_service['name']))
-            print("0. Salir")
             option = input('Ingrese una opción:')
             if option == '0':
-                return
+                break
             elif option in services:
                     service = services[option]
                     inputs={}
@@ -174,13 +173,13 @@ if __name__ == "__main__":
                 ]
             },
             {
-                'id': 's5',
+                'id': 'serv5',
                 'name': 'Eliminar producto',
                 'user_type': ['Admin'],
                 'inputs': [
                     {
-                        'name': 'id',
-                        'message': 'Ingrese el id del producto a eliminar'
+                        'name': 'nombre',
+                        'message': 'Ingrese el nombre del producto a eliminar'
                     },
                 ]
             }
