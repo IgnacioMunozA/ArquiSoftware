@@ -182,6 +182,17 @@ if __name__ == "__main__":
                         'message': 'Ingrese el nombre del producto a eliminar'
                     },
                 ]
+            },
+            {
+                'id': 'serv6',
+                'name': 'Ver historial de cambios',
+                'user_type': ['Admin'],
+                'inputs': [
+                    {
+                        'name': 'fecha',
+                        'message': 'Ingrese una fecha para ver los cambios realizados desde esa fecha' 
+                    },
+                ]
             }
         ]
     )               
