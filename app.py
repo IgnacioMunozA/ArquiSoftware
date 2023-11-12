@@ -89,6 +89,8 @@ class App:
                     for i in range(len(service['inputs'])):
                         input_data = service['inputs'][i]
                         key = input_data['name']
+                        if key == 'na':                                 # Este condicional revisa si el campo 'name' del diccionario es 'na', esto permite llamar funciones sin un input (CASO SELECTS).
+                            break
                         inputs[key]=input(input_data['message'])
                     res = self.send_msg(inputs,service['id'])
                     print(res)
@@ -192,6 +194,47 @@ if __name__ == "__main__":
                         'name': 'fecha',
                         'message': 'Ingrese una fecha para ver los cambios realizados desde esa fecha' 
                     },
+                ]
+            },
+            {
+                'id': 'serv8',
+                'name': 'Agregar empresa de transporte',
+                'user_type': ['Admin'],
+                'inputs': [
+                    {
+                        'name': 'nombre',
+                        'message': 'Ingrese el nombre'
+                    },
+                    {
+                        'name': 'telefono',
+                        'message': 'Ingrese telefono de contacto'
+                    },
+                    {
+                        'name': 'correo',
+                        'message': 'Ingrese el correo de contacto'
+                    }
+                ]
+            },
+            {
+                'id': 'serv9',
+                'name': 'Obtener lista de empresas de transporte',
+                'user_type': ['Admin'],
+                'inputs': [
+                    {
+                        'name': 'na',
+                        'message': 'Ingrese el nombre'
+                    }
+                ]
+            },
+            {
+                'id': 'ser10',
+                'name': 'Eliminar una empresa de transporte',
+                'user_type': ['Admin'],
+                'inputs': [
+                    {
+                        'name': 'nombre',
+                        'message': 'Ingrese el nombre de la empresa'
+                    }
                 ]
             }
         ]
