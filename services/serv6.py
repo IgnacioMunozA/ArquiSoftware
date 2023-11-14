@@ -15,9 +15,9 @@ def bus_format(data,status,service_name=''):
 
 
 def historial(fecha):
-    con = sqlite3.connect('db/vise.db')
+    con = sqlite3.connect('db/vise0.db')
     cursor= con.cursor()
-    query=f"""SELECT DATE(h.fecha_cambio),p.nombre ,h.detalles_cambio  FROM historialcambios h, productos p WHERE DATE(fecha_cambio) >= DATE('{fecha}') AND h.id_producto = p.id"""
+    query=f"""SELECT DATE(h.fecha_cambio),p.nombre ,h.descripcion  FROM historial_productos h, productos p WHERE DATE(fecha_cambio) >= DATE('{fecha}') AND h.id_producto = p.id"""
     cursor.execute(query)
     rows = cursor.fetchall()
     con.commit()

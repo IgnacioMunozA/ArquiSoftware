@@ -19,9 +19,9 @@ def bus_format(data, service_name=''):
 
 
 def get_transportes():
-    con = sqlite3.connect('db/vise.db')
+    con = sqlite3.connect('db/vise0.db')
     cursor= con.cursor()
-    query=f"""SELECT * FROM transportes"""
+    query=f"""SELECT * FROM transportistas"""
     cursor.execute(query)
     rows = cursor.fetchall()
     con.commit()

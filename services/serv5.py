@@ -16,7 +16,7 @@ def bus_format(data,status,service_name=''):
 
 
 def delete_product(nombre):
-    con = sqlite3.connect('db/vise.db')
+    con = sqlite3.connect('db/vise0.db')
     cursor= con.cursor()
     query1=f"""SELECT COUNT(*) FROM productos WHERE nombre='{nombre}'"""
     cursor.execute(query1)
@@ -29,7 +29,7 @@ def delete_product(nombre):
         query=f"""DELETE FROM productos WHERE nombre='{nombre}'"""
         cursor.execute(query)
         rows = f"Producto {nombre} eliminado exitosamente "
-        query3=f"""INSERT INTO historialcambios (id_producto, fecha_cambio, detalles_cambio) VALUES ({id_producto}, '{time.strftime('%Y-%m-%d %H:%M:%S')}', 'Producto {nombre} eliminado')"""
+        query3=f"""INSERT INTO historial_productos (id_producto, fecha_cambio, descripcion) VALUES ({id_producto}, '{time.strftime('%Y-%m-%d %H:%M:%S')}', 'Producto {nombre} eliminado')"""
         cursor.execute(query3)
         con.commit()
         con.close()   

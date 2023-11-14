@@ -89,7 +89,7 @@ class App:
                     for i in range(len(service['inputs'])):
                         input_data = service['inputs'][i]
                         key = input_data['name']
-                        if key == 'na':                                 # Este condicional revisa si el campo 'name' del diccionario es 'na', esto permite llamar funciones sin un input (CASO SELECTS).
+                        if key == 'na':                                 # This if conditional check the dictionary's 'name' field and checks for value 'na', a way to query 'SELECT * ...' without inputs.
                             break
                         inputs[key]=input(input_data['message'])
                     res = self.send_msg(inputs,service['id'])
@@ -122,12 +122,12 @@ if __name__ == "__main__":
         },
         services=[
             {
-                'id': 'serv2',
+                'id': 'serv2',                                                      # Terminar este código.
                 'name': 'Ver productos',
                 'user_type': ['Admin', 'Empleado'],
                 'inputs': [
                     {
-                        'name': 'nombre',
+                        'name': 'na',
                         'message': 'Ingrese el nombre'
                     },
                 ]
@@ -144,34 +144,7 @@ if __name__ == "__main__":
                     {
                         'name': 'precio',
                         'message': 'Ingrese el precio'
-                    },
-                    {
-                        'name': 'estado',
-                        'message': 'Ingrese el estado'
-                    },
-                    {
-                        'name': 'ubicacion_bodega',
-                        'message': 'Ingrese la ubicación en bodega'
-                    },
-                    {
-                        'name': 'stock_actual',
-                        'message': 'Ingrese el stock actual'
-                    },
-                    {
-                        'name': 'stock_minimo',
-                        'message': 'Ingrese el stock mínimo'
                     }
-                ]
-            },
-            {
-                'id': 'serv4',
-                'name': 'Ver usuarios',
-                'user_type': ['Admin'],
-                'inputs': [
-                    {
-                        'name': 'nombre',
-                        'message': 'Ingrese el nombre'
-                    },
                 ]
             },
             {
@@ -187,7 +160,18 @@ if __name__ == "__main__":
             },
             {
                 'id': 'serv6',
-                'name': 'Ver historial de cambios',
+                'name': 'Ver historial de cambios de productos',
+                'user_type': ['Admin', 'Empleado'],
+                'inputs': [
+                    {
+                        'name': 'fecha',
+                        'message': 'Ingrese una fecha para ver los cambios realizados desde esa fecha' 
+                    },
+                ]
+            },
+            {
+                'id': 'serv7',
+                'name': 'Ver historial de cambios de usuarios',
                 'user_type': ['Admin'],
                 'inputs': [
                     {

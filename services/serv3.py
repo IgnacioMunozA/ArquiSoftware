@@ -15,20 +15,20 @@ def bus_format(data,status,service_name=''):
 
 
 
-def new_product(nombre, precio, estado, ubicacion_bodega, stock_actual, stock_minimo):
-    con = sqlite3.connect('db/vise.db')
+def new_product(nombre, precio):
+    con = sqlite3.connect('db/vise0.db')
     cursor= con.cursor()
     query1=f"""SELECT COUNT(*) FROM productos WHERE nombre='{nombre}'"""
     cursor.execute(query1)
     count= cursor.fetchone()[0]
     if count == 0:
-        query=f"""INSERT INTO productos (nombre, precio, estado, ubicacion_bodega, stock_actual, stock_minimo) VALUES ('{nombre}', {precio}, '{estado}', '{ubicacion_bodega}', {stock_actual}, {stock_minimo})"""
+        query=f"""INSERT INTO productos (nombre, precio) VALUES ('{nombre}', {precio})"""
         cursor.execute(query)
         rows = f"Producto {nombre} agregado exitosamente "
         query2=f"""SELECT id FROM productos WHERE nombre='{nombre}'"""
         cursor.execute(query2)
         id_producto= cursor.fetchone()[0]
-        query3=f"""INSERT INTO historialcambios (id_producto, fecha_cambio, detalles_cambio) VALUES ({id_producto}, '{time.strftime('%Y-%m-%d %H:%M:%S')}', 'Producto {nombre} agregado')""" 
+        query3=f"""INSERT INTO historial_productos (id_producto, fecha_cambio, descripcion) VALUES ({id_producto}, '{time.strftime('%Y-%m-%d %H:%M:%S')}', 'Producto {nombre} agregado')""" 
         cursor.execute(query3)  
         con.commit()
         con.close()   
@@ -52,9 +52,7 @@ if status == 'OK':
         message_received= sock.recv(4096).decode('utf-8')
         client_name= message_received[5:10]
         data = eval(message_received[10:])
-        ans = new_product(data['nombre'], data['precio'], data['estado'], data['ubicacion_bodega'], data['stock_actual'], data['stock_minimo'])
+        ans = new_product(data['nombre'], data['precio'])
         response = bus_format(ans,status, str(client_name)).encode('utf-8')
         sock.send(response)
         print(response)
-    
-

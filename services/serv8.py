@@ -15,13 +15,13 @@ def bus_format(data,status,service_name=''):
 
 
 def new_transport(nombre, telefono, correo):
-    con = sqlite3.connect('db/vise.db')
+    con = sqlite3.connect('db/vise0.db')
     cursor= con.cursor()
     query1=f"""SELECT COUNT(*) FROM productos WHERE nombre='{nombre}'"""
     cursor.execute(query1)
     count= cursor.fetchone()[0]
     if count == 0:
-        query=f"""INSERT INTO transportes (nombre, telefono, correo) VAlUES ('{nombre}', '{telefono}', '{correo}')"""
+        query=f"""INSERT INTO transportistas (nombre, telefono, correo) VAlUES ('{nombre}', '{telefono}', '{correo}')"""
         cursor.execute(query)
         rows = cursor.fetchall()
         con.commit()
