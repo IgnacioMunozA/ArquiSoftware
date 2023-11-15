@@ -391,7 +391,91 @@ if __name__ == "__main__":
                         'message': 'gaming' 
                     },
                 ]
+            },
+            {
+                'id': 'ser19',
+                'name': 'Eliminar usuario',
+                'user_type': ['Admin'],
+                'inputs': [
+                    {
+                        'name': 'correo',
+                        'message': 'Ingrese el correo del usuario a eliminar'
+                    },
+                ]
+            },
+            {
+                'id': 'ser20',
+                'name': 'Actualizar información de usuario',
+                'user_type': ['Admin'],
+                'inputs': [
+                    {
+                        'name': 'correo',
+                        'message': 'Ingrese el correo del usuario a actualizar'
+                    },
+                    {
+                        'name': 'nuevo_correo',
+                        'message': 'Ingrese el nuevo correo'
+                    },
+                    {
+                        'name': 'nuevo_tipo',
+                        'message': 'Ingrese el nuevo tipo de usuario'
+                    }
+                ]
+            },
+            {
+                'id': 'ser21',
+                'name': 'Crear nuevo usuario',
+                'user_type': ['Admin'],
+                'inputs': [
+                    {
+                        'name': 'correo',
+                        'message': 'Ingrese el correo del usuario a crear'
+                    },
+                    {
+                        'name': 'tipo',
+                        'message': 'Ingrese el tipo de usuario'
+                    },
+                    {
+                        'name': 'contrasena',
+                        'message': 'Ingrese la contraseña'
+                    },
+                    {
+                        'name': 'nombre',
+                        'message': 'Ingrese el nombre'
+                    }
+                ]
+            },
+            {
+                'id': 'ser22',
+                'name': 'Cambiar contraseña',
+                'user_type': ['Admin', 'Empleado'],
+                'inputs': [
+                    {
+                        'name': 'correo',
+                        'message': 'Ingrese el correo del usuario a cambiar contraseña'
+                    },
+                    {
+                        'name': 'contrasena',
+                        'message': 'Ingrese su contraseña'
+                    },
+                    {
+                        'name': 'nueva_contrasena',
+                        'message': 'Ingrese la nueva contraseña'
+                    }
+                ]
+            },
+            {
+                'id': 'ser23',
+                'name': 'Recuperar contraseña',
+                'user_type': ['Admin', 'Empleado'],
+                'inputs': [
+                    {
+                        'name': 'correo',
+                        'message': 'Ingrese el correo del usuario a recuperar contraseña'
+                    },
+                ]
             }
+
         ]
     )               
 

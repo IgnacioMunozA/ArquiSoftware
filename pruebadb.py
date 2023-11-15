@@ -1,7 +1,7 @@
 import sqlite3
 
 def fetch_data_from_table(table_name):
-    conn = sqlite3.connect('db/vise.db')
+    conn = sqlite3.connect('db/vise0.db')
     cursor = conn.cursor()
     
     cursor.execute(f'SELECT * FROM {table_name}')
@@ -21,5 +21,3 @@ if __name__ == "__main__":
     # Ejemplo de cómo mostrar datos de cada tabla
     show_data('productos')
     show_data('usuarios')
-    show_data('historialcambios')
-    show_data('proveedor')
