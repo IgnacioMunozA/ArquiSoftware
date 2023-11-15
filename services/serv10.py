@@ -14,18 +14,21 @@ def bus_format(data,status,service_name=''):
 
 
 
-def new_transport(nombre):
+def del_transportista(nombre):
     con = sqlite3.connect('db/vise0.db')
     cursor= con.cursor()
-    query=f"""DELETE FROM transportistas WHERE nombre = '{nombre}'"""
-    cursor.execute(query)
-    rows = f"Transportista {nombre} eliminado exitosamente "
-    con.commit()
-    con.close()
-    if rows != None:
+    query0=f"""SELECT COUNT(*) FROM transportistas WHERE nombre='{nombre}'"""
+    cursor.execute(query0)
+    count= cursor.fetchone()[0]
+    if count > 0:
+        query1=f"""DELETE FROM transportistas WHERE nombre = '{nombre}'"""
+        cursor.execute(query1)
+        rows = f"Transportista {nombre} eliminado exitosamente. \n"
+        con.commit()
+        con.close()
         return rows
     else :
-        rows = "Transportista ya existe, no se puede agregar" 
+        rows = "Transportista no existe, nada que eliminar. \n" 
         return  rows 
 
     
@@ -39,12 +42,12 @@ sock.sendall(message)
 status = sock.recv(4096)[10:12].decode('utf-8')
 
 if status == 'OK':
-    print("Servicio disponible")
+    print("Servicio disponible\n")
     while True:
         message_received= sock.recv(4096).decode('utf-8')
         client_name= message_received[5:10]
         data = eval(message_received[10:])
-        ans = new_transport(data['nombre'])
+        ans = del_transportista(data['nombre'])
         response = bus_format(ans,status, str(client_name)).encode('utf-8')
         sock.send(response)
         print(response)

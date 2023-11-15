@@ -3,6 +3,7 @@ import sqlite3
 import argparse
 import time
 
+
 def bus_format(data,status,service_name=''):
     data_str = str(service_name)+str(status)+ str(data)
     transformed_data_len = len(data_str)
@@ -14,40 +15,31 @@ def bus_format(data,status,service_name=''):
 
 
 
-def new_transportista(nombre, telefono, correo):
+def get_order():
     con = sqlite3.connect('db/vise0.db')
     cursor= con.cursor()
-    query0=f"""SELECT COUNT(*) FROM transportistas WHERE nombre='{nombre}'"""
-    cursor.execute(query0)
-    count= cursor.fetchone()[0]
-    if count == 0:
-        query1=f"""INSERT INTO transportistas (nombre, telefono, correo) VALUES ('{nombre}', '{telefono}', '{correo}')"""
-        cursor.execute(query1)
-        rows = f"Empresa de transporte {nombre} añadida exitosamente. \n"
-        con.commit()
-        con.close()
-        return rows
-    else :
-        rows = "Transportista ya existe, no se puede agregar. \n" 
-        return  rows 
+    query0=f"""SELECT productos.nombre, bodega.alias, inventario.estado, inventario.stock_actual, inventario.stock_minimo FROM inventario, bodega, productos WHERE bodega.id = inventario.id_bodega AND productos.id = inventario.id_producto"""
+    rows = cursor.execute(query0).fetchall()
+    con.commit()
+    con.close()
+    return rows 
 
-    
 
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server_address = ('localhost', 5000)
 sock.connect(server_address)
 
-message = b"00010sinitserv8"
+message = b"00010sinitser18"
 sock.sendall(message)
 status = sock.recv(4096)[10:12].decode('utf-8')
 
 if status == 'OK':
-    print("Servicio disponible\n")
+    print("Servicio disponible")
     while True:
         message_received= sock.recv(4096).decode('utf-8')
         client_name= message_received[5:10]
         data = eval(message_received[10:])
-        ans = new_transportista(data['nombre'], data['telefono'], data['correo'])
+        ans = get_order()
         response = bus_format(ans,status, str(client_name)).encode('utf-8')
         sock.send(response)
         print(response)

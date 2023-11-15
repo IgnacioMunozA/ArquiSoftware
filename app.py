@@ -122,7 +122,7 @@ if __name__ == "__main__":
         },
         services=[
             {
-                'id': 'serv2',                                                      # Terminar este código.
+                'id': 'serv2',
                 'name': 'Ver productos',
                 'user_type': ['Admin', 'Empleado'],
                 'inputs': [
@@ -144,6 +144,25 @@ if __name__ == "__main__":
                     {
                         'name': 'precio',
                         'message': 'Ingrese el precio'
+                    }
+                ]
+            },
+            {
+                'id': 'serv4',
+                'name': 'Actualizar información de productos',
+                'user_type': ['Admin'],
+                'inputs': [
+                    {
+                        'name': 'nombre',
+                        'message': 'Ingrese el nombre'
+                    },
+                    {
+                        'name': 'nuevo_nombre',
+                        'message': 'Ingrese el nuevo nombre'
+                    },
+                    {
+                        'name': 'precio',
+                        'message': 'Ingrese nuevo precio'
                     }
                 ]
             },
@@ -219,6 +238,158 @@ if __name__ == "__main__":
                         'name': 'nombre',
                         'message': 'Ingrese el nombre de la empresa'
                     }
+                ]
+            },
+            {
+                'id': 'ser11',
+                'name': 'Actualizar información de empresa de transporte',
+                'user_type': ['Admin'],
+                'inputs': [
+                    {
+                        'name': 'nombre',
+                        'message': 'Ingrese el nombre'
+                    },
+                    {
+                        'name': 'nuevo_nombre',
+                        'message': 'Ingrese el nuevo nombre'
+                    },
+                    {
+                        'name': 'telefono',
+                        'message': 'Ingrese telefono de contacto'
+                    },
+                    {
+                        'name': 'correo',
+                        'message': 'Ingrese el correo de contacto'
+                    }
+                ]
+            },
+            {
+                'id': 'ser12',
+                'name': 'Agregar proveedor',
+                'user_type': ['Admin'],
+                'inputs': [
+                    {
+                        'name': 'nombre',
+                        'message': 'Ingrese el nombre'
+                    },
+                    {
+                        'name': 'telefono',
+                        'message': 'Ingrese telefono de contacto'
+                    },
+                    {
+                        'name': 'correo',
+                        'message': 'Ingrese el correo de contacto'
+                    }
+                ]
+            },
+            {
+                'id': 'ser13',
+                'name': 'Obtener lista de proveedores',
+                'user_type': ['Admin'],
+                'inputs': [
+                    {
+                        'name': 'na',
+                        'message': 'Ingrese el nombre'
+                    }
+                ]
+            },
+            {
+                'id': 'ser14',
+                'name': 'Eliminar un proveedor',
+                'user_type': ['Admin'],
+                'inputs': [
+                    {
+                        'name': 'nombre',
+                        'message': 'Ingrese el nombre de la empresa'
+                    }
+                ]
+            },
+            {
+                'id': 'ser15',
+                'name': 'Actualizar información de proveedor',
+                'user_type': ['Admin'],
+                'inputs': [
+                    {
+                        'name': 'nombre',
+                        'message': 'Ingrese el nombre'
+                    },
+                    {
+                        'name': 'nuevo_nombre',
+                        'message': 'Ingrese el nuevo nombre'
+                    },
+                    {
+                        'name': 'telefono',
+                        'message': 'Ingrese telefono de contacto'
+                    },
+                    {
+                        'name': 'correo',
+                        'message': 'Ingrese el correo de contacto'
+                    }
+                ]
+            },
+            {
+                'id': 'ser16',
+                'name': 'Crear instancia de inventario... (?)',
+                'user_type': ['Admin', 'Empleado'],
+                'inputs': [
+                    {
+                        'name': 'nombre_producto',
+                        'message': 'Ingrese el nombre del producto'
+                    },
+                    {
+                        'name': 'alias_bodega',
+                        'message': 'Ingrese el alias de la bodega'
+                    },
+                    {
+                        'name': 'estado',
+                        'message': 'Ingrese el estado'
+                    },
+                    {
+                        'name': 'stock_actual',
+                        'message': 'Ingrese el stock actual'
+                    },
+                    {
+                        'name': 'stock_minimo',
+                        'message': 'Ingrese el stock mínimo'
+                    }
+                ]
+            },
+            {
+                'id': 'ser17',
+                'name': 'Gestionar inventarios',
+                'user_type': ['Admin', 'Empleado'],
+                'inputs': [
+                    {
+                        'name': 'nombre_producto',
+                        'message': 'Ingrese el nombre del producto'
+                    },
+                    {
+                        'name': 'alias_bodega',
+                        'message': 'Ingrese el alias de la bodega'
+                    },
+                    {
+                        'name': 'estado',
+                        'message': 'Ingrese el estado'
+                    },
+                    {
+                        'name': 'stock_actual',
+                        'message': 'Ingrese el stock actual'
+                    },
+                    {
+                        'name': 'stock_minimo',
+                        'message': 'Ingrese el stock mínimo'
+                    }
+                ]
+            },
+            {
+                'id': 'ser18',
+                'name': 'Ver inventarios',
+                'user_type': ['Admin', 'Empleado'],
+                'inputs': [
+                    {
+                        'name': 'na',
+                        'message': 'gaming' 
+                    },
                 ]
             }
         ]

@@ -1,6 +1,15 @@
 ## Registro de cambios
 Inicio de registro posterior a commit número 13.
 
+# 15/11/23 - 01
+
+- Corregido un error de consulta en el servicio 8.
+- Corregido un condicional relacionado a consultas en el servicio 10.
+- Corregidos múltiples mensajes de servicios.
+- Añadido CRUD de proveedores.
+- Añadidos servicios de lectura, creación y gestión de inventarios.
+- Añadidos UPDATE para transportistas y productos.
+
 # 14/11/23 - 01
 Nuevo modelo de datos, cambios de estructura menores y actualización de código.
 

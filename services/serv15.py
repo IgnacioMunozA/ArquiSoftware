@@ -3,6 +3,7 @@ import sqlite3
 import argparse
 import time
 
+
 def bus_format(data,status,service_name=''):
     data_str = str(service_name)+str(status)+ str(data)
     transformed_data_len = len(data_str)
@@ -14,40 +15,45 @@ def bus_format(data,status,service_name=''):
 
 
 
-def new_transportista(nombre, telefono, correo):
+def upd_proveedores(nombre, nuevo_nombre, telefono, correo):
     con = sqlite3.connect('db/vise0.db')
     cursor= con.cursor()
-    query0=f"""SELECT COUNT(*) FROM transportistas WHERE nombre='{nombre}'"""
-    cursor.execute(query0)
-    count= cursor.fetchone()[0]
-    if count == 0:
-        query1=f"""INSERT INTO transportistas (nombre, telefono, correo) VALUES ('{nombre}', '{telefono}', '{correo}')"""
-        cursor.execute(query1)
-        rows = f"Empresa de transporte {nombre} añadida exitosamente. \n"
+    query0=f"""SELECT COUNT(*) FROM proveedores WHERE nombre = '{nombre}'"""
+    count = cursor.execute(query0).fetchone()
+    if count[0] > 0:
+        query1=f"""SELECT * FROM proveedores WHERE nombre = '{nombre}'"""
+        count = cursor.execute(query1).fetchone()
+        if nuevo_nombre == '':
+            nuevo_nombre = nombre
+        if telefono == '':
+            telefono = count[2]
+        if correo == '':
+            correo = count[3]
+        cursor.execute("UPDATE proveedores SET nombre = ?, telefono = ?, correo = ? WHERE nombre = ?", (nuevo_nombre, telefono, correo, nombre))
+        rows = f"Cambios realizados exitosamente. \n"
         con.commit()
-        con.close()
+        con.close()   
         return rows
     else :
-        rows = "Transportista ya existe, no se puede agregar. \n" 
-        return  rows 
+        rows = "Proveedor inexistente, no se puede completar la acción. \n" 
+        return  rows  
 
-    
 
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server_address = ('localhost', 5000)
 sock.connect(server_address)
 
-message = b"00010sinitserv8"
+message = b"00010sinitser15"
 sock.sendall(message)
 status = sock.recv(4096)[10:12].decode('utf-8')
 
 if status == 'OK':
-    print("Servicio disponible\n")
+    print("Servicio disponible")
     while True:
         message_received= sock.recv(4096).decode('utf-8')
         client_name= message_received[5:10]
         data = eval(message_received[10:])
-        ans = new_transportista(data['nombre'], data['telefono'], data['correo'])
+        ans = upd_proveedores(data['nombre'], data['nuevo_nombre'], data['telefono'], data['correo'])
         response = bus_format(ans,status, str(client_name)).encode('utf-8')
         sock.send(response)
         print(response)
