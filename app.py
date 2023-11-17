@@ -72,27 +72,37 @@ class App:
             print("Menú de opciones: ")
             print("0. Salir")
             available_services = [
-                service for service in self.services if type_id in service['user_type']
+                service for service in self.services if type_id in service['user_type']     #Filters services to display by user role.
 
             ]
             services={}
             for i in range(len(available_services)):
                 actual_service = available_services[i]
-                services[f'{i+1}'] = actual_service
+                services[f'{i+1}'] = actual_service                     #Creates a dictionary {str:dict}
                 print("Opcion{}:{}".format(i+1,actual_service['name']))
             option = input('Ingrese una opción:')
             if option == '0':
                 break
-            elif option in services:
-                    service = services[option]
+            elif option in services:                        #Select a service.
+                    service = services[option]              #Sets said service as current one.
                     inputs={}
-                    for i in range(len(service['inputs'])):
-                        input_data = service['inputs'][i]
+                    for i in range(len(service['inputs'])):     #Iterates through the chosen service's inputs
+                        input_data = service['inputs'][i]       #Makes input_data = chosen service's input list current iteration item ~ another dictionary {name:message}
                         key = input_data['name']
                         if key == 'na':                                 # This if conditional check the dictionary's 'name' field and checks for value 'na', a way to query 'SELECT * ...' without inputs.
                             break
-                        inputs[key]=input(input_data['message'])
-                    res = self.send_msg(inputs,service['id'])
+                        if key == 'input_list':
+                            item_dict = {}
+                            while True:
+                                p_name = input("Ingrese el nombre del producto a ordenar (0 para terminar): \n")
+                                if p_name == '0':
+                                    break
+                                item_dict[p_name] = input("Ingrese la cantidad deseada: \n")
+
+                            inputs[key] = item_dict
+                        else:
+                            inputs[key]=input(input_data['message'])    #Inserts current iteration's entered data into the empty dict 'inputs'.    
+                    res = self.send_msg(inputs,service['id'])       #Sends all entered data ('inputs') to the bus.
                     print(res)
                     if res[10:12] == 'NK':
                         print("Servicio no está disponible")
@@ -474,6 +484,29 @@ if __name__ == "__main__":
                         'message': 'Ingrese el correo del usuario a recuperar contraseña'
                     },
                 ]
+            },
+            {
+                'id': 'ser24',
+                'name': 'Servicio prueba pedido',
+                'user_type': ['Admin', 'Empleado'],
+                'inputs': [
+                    {
+                        'name': 'transportista',
+                        'message': 'Ingrese el nombre de la empresa de transporte'
+                    },
+                    {
+                        'name': 'proveedor',
+                        'message': 'Ingrese el nombre del proveedor'
+                    },
+                    {
+                        'name': 'bodega',
+                        'message': 'Ingrese alias de bodega que recibirá.!11!1111'
+                    },
+                    {
+                        'name': 'input_list',
+                        'message': 'productos b3rgas :v'
+                    },
+                ]
             }
 
         ]
@@ -484,6 +517,7 @@ app.login_menu()
 
 
     
+
 
 
 

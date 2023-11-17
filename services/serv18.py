@@ -15,7 +15,7 @@ def bus_format(data,status,service_name=''):
 
 
 
-def get_order():
+def get_inventory():
     con = sqlite3.connect('db/vise0.db')
     cursor= con.cursor()
     query0=f"""SELECT productos.nombre, bodega.alias, inventario.estado, inventario.stock_actual, inventario.stock_minimo FROM inventario, bodega, productos WHERE bodega.id = inventario.id_bodega AND productos.id = inventario.id_producto"""
@@ -39,7 +39,7 @@ if status == 'OK':
         message_received= sock.recv(4096).decode('utf-8')
         client_name= message_received[5:10]
         data = eval(message_received[10:])
-        ans = get_order()
+        ans = get_inventory()
         response = bus_format(ans,status, str(client_name)).encode('utf-8')
         sock.send(response)
         print(response)
