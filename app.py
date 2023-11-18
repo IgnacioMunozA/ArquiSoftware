@@ -507,6 +507,28 @@ if __name__ == "__main__":
                         'message': 'Ingresar productos'
                     },
                 ]
+            },
+            {
+                'id': 'ser25',
+                'name': ' Obtener UN pedido\033[0m',
+                'user_type': ['Admin', 'Empleado'],
+                'inputs': [
+                    {
+                        'name': 'order_id',
+                        'message': 'Ingrese el id del pedido: \n'
+                    },
+                ]
+            },
+            {
+                'id': 'ser26',
+                'name': ' Obtener todos los pedidos\033[0m',
+                'user_type': ['Admin', 'Empleado'],
+                'inputs': [
+                    {
+                        'name': 'na',
+                        'message': 'Obtener todos los pedidos: \n'
+                    },
+                ]
             }
 
         ]
