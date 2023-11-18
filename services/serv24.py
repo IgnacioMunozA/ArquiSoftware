@@ -3,7 +3,6 @@ import sqlite3
 import argparse
 import time
 
-# NON TESTED CODE BELLOW
 
 def bus_format(data,status,service_name=''):
     data_str = str(service_name)+str(status)+ str(data)
@@ -38,7 +37,7 @@ def create_order(transportista, proveedor, bodega, input_list):
     con.commit()
     con.close()
     if(len(rows)==0):
-        return "DIABLO"
+        return "Error"
     else:
         return rows
     
