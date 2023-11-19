@@ -48,7 +48,7 @@ class App:
             print("Menú de opciones: ")
             print("0. Salir")
             print("1. {}".format(self.login_service['name']))
-            option = input('Ingrese una opción')
+            option = input('Ingrese una opción: ')
             if option == '0':
                 return
             elif option == '1':
@@ -130,7 +130,7 @@ if __name__ == "__main__":
                 }
             ]
         },
-        services=[
+        services=[          #PERMISOSSSSSS
             {
                 'id': 'serv2',
                 'name': '\033[1;32m Ver productos\033[0m',
@@ -189,7 +189,7 @@ if __name__ == "__main__":
             },
             {
                 'id': 'serv6',
-                'name': '\033[1;37m Ver historial de cambios de productos',
+                'name': '\033[1;37m Ver historial de cambios de productos\033[0m',
                 'user_type': ['Admin', 'Empleado'],
                 'inputs': [
                     {
@@ -200,7 +200,7 @@ if __name__ == "__main__":
             },
             {
                 'id': 'serv7',
-                'name': '\033[1;37m Ver historial de cambios de usuarios',
+                'name': '\033[1;37m Ver historial de cambios de usuarios\033[0m',
                 'user_type': ['Admin'],
                 'inputs': [
                     {
@@ -487,7 +487,7 @@ if __name__ == "__main__":
             },
             {
                 'id': 'ser24',
-                'name': ' Servicio prueba pedido\033[0m',
+                'name': '\033[1;31m Crear un nuevo pedido\033[0m',
                 'user_type': ['Admin', 'Empleado'],
                 'inputs': [
                     {
@@ -510,7 +510,7 @@ if __name__ == "__main__":
             },
             {
                 'id': 'ser25',
-                'name': ' Obtener UN pedido\033[0m',
+                'name': '\033[1;31m Obtener un pedido\033[0m',
                 'user_type': ['Admin', 'Empleado'],
                 'inputs': [
                     {
@@ -521,12 +521,23 @@ if __name__ == "__main__":
             },
             {
                 'id': 'ser26',
-                'name': ' Obtener todos los pedidos\033[0m',
+                'name': '\033[1;31m Obtener detalle de pedido\033[0m',
                 'user_type': ['Admin', 'Empleado'],
                 'inputs': [
                     {
                         'name': 'na',
                         'message': 'Obtener todos los pedidos: \n'
+                    },
+                ]
+            },
+            {
+                'id': 'ser27',
+                'name': '\033[1;31m Eliminar registro de historial de productos: \033[0m',
+                'user_type': ['Admin'],
+                'inputs': [
+                    {
+                        'name': 'fecha',
+                        'message': 'Ingrese fecha y hora de registro a eliminar: \n'
                     },
                 ]
             }

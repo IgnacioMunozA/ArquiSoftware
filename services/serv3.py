@@ -29,9 +29,9 @@ def new_product(nombre, precio):
         cursor.execute(query2)
         id_producto= cursor.fetchone()[0]
         query3=f"""INSERT INTO historial_productos (id_producto, fecha_cambio, descripcion) VALUES ({id_producto}, '{time.strftime('%Y-%m-%d %H:%M:%S')}', 'Producto {nombre} agregado')""" 
-        cursor.execute(query3)  
+        cursor.execute(query3)
         con.commit()
-        con.close()   
+        con.close()
         return rows
     else :
         rows = "Producto ya existe, no se puede agregar" 
