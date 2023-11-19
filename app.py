@@ -132,17 +132,6 @@ if __name__ == "__main__":
         },
         services=[          #PERMISOSSSSSS
             {
-                'id': 'serv2',
-                'name': '\033[1;32m Ver productos\033[0m',
-                'user_type': ['Admin', 'Empleado'],
-                'inputs': [
-                    {
-                        'name': 'na',
-                        'message': 'Ingrese el nombre: \n'
-                    },
-                ]
-            },
-            {
                 'id': 'serv3',
                 'name': '\033[1;32m Agregar producto\033[0m',
                 'user_type': ['Admin'],
@@ -155,6 +144,17 @@ if __name__ == "__main__":
                         'name': 'precio',
                         'message': 'Ingrese el precio: \n'
                     }
+                ]
+            },
+            {
+                'id': 'serv2',
+                'name': '\033[1;32m Ver productos\033[0m',
+                'user_type': ['Admin', 'Empleado'],
+                'inputs': [
+                    {
+                        'name': 'na',
+                        'message': 'Ingrese el nombre: \n'
+                    },
                 ]
             },
             {
@@ -178,7 +178,7 @@ if __name__ == "__main__":
             },
             {
                 'id': 'serv5',
-                'name': '\033[1;32m Eliminar producto\033[0m',
+                'name': '\033[1;32m Eliminar producto\033[0m \n------------------------------------------------------------',
                 'user_type': ['Admin'],
                 'inputs': [
                     {
@@ -188,89 +188,56 @@ if __name__ == "__main__":
                 ]
             },
             {
-                'id': 'serv6',
-                'name': '\033[1;37m Ver historial de cambios de productos\033[0m',
-                'user_type': ['Admin', 'Empleado'],
-                'inputs': [
-                    {
-                        'name': 'fecha',
-                        'message': 'Ingrese una fecha para ver los cambios realizados desde esa fecha: \n' 
-                    },
-                ]
-            },
-            {
-                'id': 'serv7',
-                'name': '\033[1;37m Ver historial de cambios de usuarios\033[0m',
+                'id': 'ser21',
+                'name': '\033[1;37m Crear nuevo usuario\033[0m ',
                 'user_type': ['Admin'],
                 'inputs': [
-                    {
-                        'name': 'fecha',
-                        'message': 'Ingrese una fecha para ver los cambios realizados desde esa fecha: \n' 
-                    },
-                ]
-            },
-            {
-                'id': 'serv8',
-                'name': '\033[1;33m Agregar empresa de transporte\033[0m',
-                'user_type': ['Admin'],
-                'inputs': [
-                    {
-                        'name': 'nombre',
-                        'message': 'Ingrese el nombre: \n'
-                    },
-                    {
-                        'name': 'telefono',
-                        'message': 'Ingrese telefono de contacto: \n'
-                    },
                     {
                         'name': 'correo',
-                        'message': 'Ingrese el correo de contacto: \n'
-                    }
-                ]
-            },
-            {
-                'id': 'serv9',
-                'name': '\033[1;33m Obtener lista de empresas de transporte\033[0m',
-                'user_type': ['Admin'],
-                'inputs': [
+                        'message': 'Ingrese el correo del usuario a crear: \n'
+                    },
                     {
-                        'name': 'na',
+                        'name': 'tipo',
+                        'message': 'Ingrese el tipo de usuario: \n'
+                    },
+                    {
+                        'name': 'contrasena',
+                        'message': 'Ingrese la contraseña: \n'
+                    },
+                    {
+                        'name': 'nombre',
                         'message': 'Ingrese el nombre: \n'
                     }
                 ]
             },
             {
-                'id': 'ser10',
-                'name': '\033[1;33m Eliminar una empresa de transporte\033[0m',
+                'id': 'ser20',
+                'name': '\033[1;37m Actualizar información de usuario\033[0m',
                 'user_type': ['Admin'],
                 'inputs': [
                     {
-                        'name': 'nombre',
-                        'message': 'Ingrese el nombre de la empresa: \n'
+                        'name': 'correo',
+                        'message': 'Ingrese el correo del usuario a actualizar: \n'
+                    },
+                    {
+                        'name': 'nuevo_correo',
+                        'message': 'Ingrese el nuevo correo: \n'
+                    },
+                    {
+                        'name': 'nuevo_tipo',
+                        'message': 'Ingrese el nuevo tipo de usuario: \n'
                     }
                 ]
             },
             {
-                'id': 'ser11',
-                'name': '\033[1;33m Actualizar información de empresa de transporte\033[0m',
+                'id': 'ser19',
+                'name': '\033[1;37m Eliminar usuario\033[0m \n------------------------------------------------------------',
                 'user_type': ['Admin'],
                 'inputs': [
                     {
-                        'name': 'nombre',
-                        'message': 'Ingrese el nombre'
-                    },
-                    {
-                        'name': 'nuevo_nombre',
-                        'message': 'Ingrese el nuevo nombre: \n'
-                    },
-                    {
-                        'name': 'telefono',
-                        'message': 'Ingrese telefono de contacto: \n'
-                    },
-                    {
                         'name': 'correo',
-                        'message': 'Ingrese el correo de contacto: \n'
-                    }
+                        'message': 'Ingrese el correo del usuario a eliminar: \n'
+                    },
                 ]
             },
             {
@@ -304,17 +271,6 @@ if __name__ == "__main__":
                 ]
             },
             {
-                'id': 'ser14',
-                'name': '\033[1;34m Eliminar un proveedor\033[0m',
-                'user_type': ['Admin'],
-                'inputs': [
-                    {
-                        'name': 'nombre',
-                        'message': 'Ingrese el nombre de la empresa: \n'
-                    }
-                ]
-            },
-            {
                 'id': 'ser15',
                 'name': '\033[1;34m Actualizar información de proveedor\033[0m',
                 'user_type': ['Admin'],
@@ -338,35 +294,83 @@ if __name__ == "__main__":
                 ]
             },
             {
-                'id': 'ser16',
-                'name': '\033[1;36m Crear instancia de inventario\033[0m',
-                'user_type': ['Admin', 'Empleado'],
+                'id': 'ser14',
+                'name': '\033[1;34m Eliminar un proveedor\033[0m \n------------------------------------------------------------',
+                'user_type': ['Admin'],
                 'inputs': [
                     {
-                        'name': 'nombre_producto',
-                        'message': 'Ingrese el nombre del producto: \n'
-                    },
-                    {
-                        'name': 'alias_bodega',
-                        'message': 'Ingrese el alias de la bodega: \n'
-                    },
-                    {
-                        'name': 'estado',
-                        'message': 'Ingrese el estado: \n'
-                    },
-                    {
-                        'name': 'stock_actual',
-                        'message': 'Ingrese el stock actual: \n'
-                    },
-                    {
-                        'name': 'stock_minimo',
-                        'message': 'Ingrese el stock mínimo: \n'
+                        'name': 'nombre',
+                        'message': 'Ingrese el nombre de la empresa: \n'
                     }
                 ]
             },
             {
-                'id': 'ser17',
-                'name': '\033[1;36m Gestionar inventarios\033[0m',
+                'id': 'serv8',
+                'name': '\033[1;33m Agregar empresa de transporte\033[0m',
+                'user_type': ['Admin'],
+                'inputs': [
+                    {
+                        'name': 'nombre',
+                        'message': 'Ingrese el nombre: \n'
+                    },
+                    {
+                        'name': 'telefono',
+                        'message': 'Ingrese telefono de contacto: \n'
+                    },
+                    {
+                        'name': 'correo',
+                        'message': 'Ingrese el correo de contacto: \n'
+                    }
+                ]
+            },
+            {
+                'id': 'serv9',
+                'name': '\033[1;33m Obtener lista de empresas de transporte\033[0m',
+                'user_type': ['Admin'],
+                'inputs': [
+                    {
+                        'name': 'na',
+                        'message': 'Ingrese el nombre: \n'
+                    }
+                ]
+            },
+            {
+                'id': 'ser11',
+                'name': '\033[1;33m Actualizar información de empresa de transporte\033[0m',
+                'user_type': ['Admin'],
+                'inputs': [
+                    {
+                        'name': 'nombre',
+                        'message': 'Ingrese el nombre'
+                    },
+                    {
+                        'name': 'nuevo_nombre',
+                        'message': 'Ingrese el nuevo nombre: \n'
+                    },
+                    {
+                        'name': 'telefono',
+                        'message': 'Ingrese telefono de contacto: \n'
+                    },
+                    {
+                        'name': 'correo',
+                        'message': 'Ingrese el correo de contacto: \n'
+                    }
+                ]
+            },
+            {
+                'id': 'ser10',
+                'name': '\033[1;33m Eliminar una empresa de transporte\033[0m \n------------------------------------------------------------',
+                'user_type': ['Admin'],
+                'inputs': [
+                    {
+                        'name': 'nombre',
+                        'message': 'Ingrese el nombre de la empresa: \n'
+                    }
+                ]
+            },
+            {
+                'id': 'ser16',
+                'name': '\033[1;36m Crear instancia de inventario\033[0m',
                 'user_type': ['Admin', 'Empleado'],
                 'inputs': [
                     {
@@ -403,86 +407,30 @@ if __name__ == "__main__":
                 ]
             },
             {
-                'id': 'ser19',
-                'name': '\033[1;37m Eliminar usuario\033[0m',
-                'user_type': ['Admin'],
-                'inputs': [
-                    {
-                        'name': 'correo',
-                        'message': 'Ingrese el correo del usuario a eliminar: \n'
-                    },
-                ]
-            },
-            {
-                'id': 'ser20',
-                'name': '\033[1;37m Actualizar información de usuario\033[0m',
-                'user_type': ['Admin'],
-                'inputs': [
-                    {
-                        'name': 'correo',
-                        'message': 'Ingrese el correo del usuario a actualizar: \n'
-                    },
-                    {
-                        'name': 'nuevo_correo',
-                        'message': 'Ingrese el nuevo correo: \n'
-                    },
-                    {
-                        'name': 'nuevo_tipo',
-                        'message': 'Ingrese el nuevo tipo de usuario: \n'
-                    }
-                ]
-            },
-            {
-                'id': 'ser21',
-                'name': '\033[1;37m Crear nuevo usuario\033[0m',
-                'user_type': ['Admin'],
-                'inputs': [
-                    {
-                        'name': 'correo',
-                        'message': 'Ingrese el correo del usuario a crear: \n'
-                    },
-                    {
-                        'name': 'tipo',
-                        'message': 'Ingrese el tipo de usuario: \n'
-                    },
-                    {
-                        'name': 'contrasena',
-                        'message': 'Ingrese la contraseña: \n'
-                    },
-                    {
-                        'name': 'nombre',
-                        'message': 'Ingrese el nombre: \n'
-                    }
-                ]
-            },
-            {
-                'id': 'ser22',
-                'name': '\033[1;30m Cambiar contraseña\033[0m',
+                'id': 'ser17',
+                'name': '\033[1;36m Gestionar inventarios\033[0m \n------------------------------------------------------------',
                 'user_type': ['Admin', 'Empleado'],
                 'inputs': [
                     {
-                        'name': 'correo',
-                        'message': 'Ingrese el correo del usuario a cambiar contraseña: \n'
+                        'name': 'nombre_producto',
+                        'message': 'Ingrese el nombre del producto: \n'
                     },
                     {
-                        'name': 'contrasena',
-                        'message': 'Ingrese su contraseña: \n'
+                        'name': 'alias_bodega',
+                        'message': 'Ingrese el alias de la bodega: \n'
                     },
                     {
-                        'name': 'nueva_contrasena',
-                        'message': 'Ingrese la nueva contraseña: \n'
+                        'name': 'estado',
+                        'message': 'Ingrese el estado: \n'
+                    },
+                    {
+                        'name': 'stock_actual',
+                        'message': 'Ingrese el stock actual: \n'
+                    },
+                    {
+                        'name': 'stock_minimo',
+                        'message': 'Ingrese el stock mínimo: \n'
                     }
-                ]
-            },
-            {
-                'id': 'ser23',
-                'name': '\033[1;30m Recuperar contraseña\033[0m',
-                'user_type': ['Admin', 'Empleado'],
-                'inputs': [
-                    {
-                        'name': 'correo',
-                        'message': 'Ingrese el correo del usuario a recuperar contraseña: \n'
-                    },
                 ]
             },
             {
@@ -521,12 +469,34 @@ if __name__ == "__main__":
             },
             {
                 'id': 'ser26',
-                'name': '\033[1;31m Obtener detalle de pedido\033[0m',
+                'name': '\033[1;31m Obtener detalle de pedido\033[0m \n------------------------------------------------------------',
                 'user_type': ['Admin', 'Empleado'],
                 'inputs': [
                     {
                         'name': 'na',
                         'message': 'Obtener todos los pedidos: \n'
+                    },
+                ]
+            },
+            {
+                'id': 'serv6',
+                'name': '\033[1;37m Ver historial de cambios de productos\033[0m',
+                'user_type': ['Admin', 'Empleado'],
+                'inputs': [
+                    {
+                        'name': 'fecha',
+                        'message': 'Ingrese una fecha para ver los cambios realizados desde esa fecha: \n' 
+                    },
+                ]
+            },
+            {
+                'id': 'serv7',
+                'name': '\033[1;37m Ver historial de cambios de usuarios\033[0m \n------------------------------------------------------------',
+                'user_type': ['Admin'],
+                'inputs': [
+                    {
+                        'name': 'fecha',
+                        'message': 'Ingrese una fecha para ver los cambios realizados desde esa fecha: \n' 
                     },
                 ]
             },
@@ -543,12 +513,42 @@ if __name__ == "__main__":
             },
             {
                 'id': 'ser28',
-                'name': '\033[1;37m Eliminar registro de historial de usuarios\033[0m',
+                'name': '\033[1;37m Eliminar registro de historial de usuarios\033[0m \n------------------------------------------------------------',
                 'user_type': ['Admin'],
                 'inputs': [
                     {
                         'name': 'fecha',
                         'message': 'Ingrese fecha del registro a eliminar: \n'
+                    },
+                ]
+            },
+            {
+                'id': 'ser22',
+                'name': '\033[1;30m Cambiar contraseña\033[0m',
+                'user_type': ['Admin', 'Empleado'],
+                'inputs': [
+                    {
+                        'name': 'correo',
+                        'message': 'Ingrese el correo del usuario a cambiar contraseña: \n'
+                    },
+                    {
+                        'name': 'contrasena',
+                        'message': 'Ingrese su contraseña: \n'
+                    },
+                    {
+                        'name': 'nueva_contrasena',
+                        'message': 'Ingrese la nueva contraseña: \n'
+                    }
+                ]
+            },
+            {
+                'id': 'ser23',
+                'name': '\033[1;30m Recuperar contraseña\033[0m \n------------------------------------------------------------',
+                'user_type': ['Admin', 'Empleado'],
+                'inputs': [
+                    {
+                        'name': 'correo',
+                        'message': 'Ingrese el correo del usuario a recuperar contraseña: \n'
                     },
                 ]
             }
