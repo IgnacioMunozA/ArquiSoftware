@@ -36,7 +36,7 @@ sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server_address = ('localhost', 5000)
 sock.connect(server_address)
 
-message = b"00010sinitser27"
+message = b"00010sinitser28"
 sock.sendall(message)
 status = sock.recv(4096)[10:12].decode('utf-8')
 

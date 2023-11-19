@@ -532,12 +532,23 @@ if __name__ == "__main__":
             },
             {
                 'id': 'ser27',
-                'name': '\033[1;31m Eliminar registro de historial de productos: \033[0m',
+                'name': '\033[1;37m Eliminar registro de historial de productos\033[0m',
                 'user_type': ['Admin'],
                 'inputs': [
                     {
                         'name': 'fecha',
-                        'message': 'Ingrese fecha y hora de registro a eliminar: \n'
+                        'message': 'Ingrese fecha del registro a eliminar: \n'
+                    },
+                ]
+            },
+            {
+                'id': 'ser28',
+                'name': '\033[1;37m Eliminar registro de historial de usuarios\033[0m',
+                'user_type': ['Admin'],
+                'inputs': [
+                    {
+                        'name': 'fecha',
+                        'message': 'Ingrese fecha del registro a eliminar: \n'
                     },
                 ]
             }
