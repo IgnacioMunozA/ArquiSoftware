@@ -485,7 +485,7 @@ if __name__ == "__main__":
                 'inputs': [
                     {
                         'name': 'fecha',
-                        'message': 'Ingrese una fecha para ver los cambios realizados desde esa fecha: \n' 
+                        'message': 'Ingrese una fecha para ver los cambios realizados: \n' 
                     },
                 ]
             },
@@ -496,7 +496,7 @@ if __name__ == "__main__":
                 'inputs': [
                     {
                         'name': 'fecha',
-                        'message': 'Ingrese una fecha para ver los cambios realizados desde esa fecha: \n' 
+                        'message': 'Ingrese una fecha para ver los cambios realizados: \n' 
                     },
                 ]
             },

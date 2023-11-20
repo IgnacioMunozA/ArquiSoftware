@@ -17,25 +17,38 @@ def bus_format(data,status,service_name=''):
 
 def upd_productos(nombre, nuevo_nombre, precio):
     con = sqlite3.connect('db/vise0.db')
-    cursor= con.cursor()
-    query0=f"""SELECT COUNT(*) FROM productos WHERE nombre = '{nombre}'"""
-    count = cursor.execute(query0).fetchone()
-    if count[0] > 0:
-        query1=f"""SELECT * FROM productos WHERE nombre = '{nombre}'"""
-        count = cursor.execute(query1).fetchone()
-        print(count)
+    cursor = con.cursor()
+
+    # Verificar si el producto existe
+    query_existencia = f"""SELECT COUNT(*) FROM productos WHERE nombre = '{nombre}'"""
+    count_existencia = cursor.execute(query_existencia).fetchone()
+    
+    if count_existencia[0] > 0:
+        # Obtener los valores actuales del producto
+        query_select_producto = f"""SELECT * FROM productos WHERE nombre = '{nombre}'"""
+        producto_anterior = cursor.execute(query_select_producto).fetchone()
+
+        # Actualizar valores con valores predeterminados si es necesario
         if nuevo_nombre == '':
             nuevo_nombre = nombre
         if precio == '':
-            precio = count[2]
+            precio = producto_anterior[2]
+
+        # Actualizar en la tabla productos
         cursor.execute("UPDATE productos SET nombre = ?, precio = ? WHERE nombre = ?", (nuevo_nombre, precio, nombre))
-        rows = f"Cambios realizados exitosamente. \n"
+
+        # Insertar en la tabla historial_productos
+        query_insert_historial = f"""INSERT INTO historial_productos (id_producto, fecha_cambio, descripcion) VALUES ('{producto_anterior[0]}', '{time.strftime('%Y-%m-%d %H:%M:%S')}', 'Prducto {nuevo_nombre} actualizado') """
+        cursor.execute(query_insert_historial)
+
+        rows = "Cambios realizados exitosamente.\n"
         con.commit()
         con.close()   
         return rows
-    else :
-        rows = "Producto inexistente, no se puede completar la acción. \n" 
-        return  rows  
+    else:
+        rows = "Producto inexistente, no se puede completar la acción.\n"
+        return rows
+
 
 
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
