@@ -18,12 +18,29 @@ def bus_format(data,status,service_name=''):
 def update_user(correo,nuevo_correo,nuevo_tipo):
     con = sqlite3.connect('db/vise0.db')
     cursor= con.cursor()
-    query0=f"""UPDATE usuarios SET correo = '{nuevo_correo}', rol = '{nuevo_tipo}' WHERE correo = '{correo}'"""
-    rows = cursor.execute(query0).fetchall()
-    con.commit()
-    con.close()
-    return rows 
+    query0=f"""SELECT COUNT(*) FROM usuarios WHERE correo = '{correo}'"""
+    count = cursor.execute(query0).fetchone()
+    if count[0] > 0:
+        query1=f"""SELECT * FROM usuarios WHERE correo = '{correo}'"""
+        count = cursor.execute(query1).fetchone()
+        print(count)
+        if nuevo_correo == '':
+            nuevo_correo = correo
+        if nuevo_tipo == '':
+            nuevo_tipo = count[4]
+        query0=f"""UPDATE usuarios SET correo = '{nuevo_correo}', rol = '{nuevo_tipo}' WHERE correo = '{correo}'"""
 
+        query3=f"""INSERT INTO historial_usuarios (id_usuario, fecha_cambio, descripcion) VALUES ('{count[0]}', '{time.strftime('%Y-%m-%d %H:%M:%S')}', 'Usuario {correo} modificado.')"""
+        cursor.execute(query3)
+        rows = cursor.execute(query0).fetchall()
+
+        rows = f"Cambios realizados exitosamente. \n"
+        con.commit()
+        con.close()   
+        return rows
+    else :
+        rows = "Usuario inexistente, nada que actualizar. \n" 
+        return  rows  
 
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server_address = ('localhost', 5000)

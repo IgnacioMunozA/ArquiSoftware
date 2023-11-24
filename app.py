@@ -277,7 +277,7 @@ if __name__ == "__main__":
                 'inputs': [
                     {
                         'name': 'nombre',
-                        'message': 'Ingrese el nombre: \n'
+                        'message': 'Ingrese el nombre del proveedor: \n'
                     },
                     {
                         'name': 'nuevo_nombre',
@@ -458,7 +458,7 @@ if __name__ == "__main__":
             },
             {
                 'id': 'ser25',
-                'name': '\033[1;31m Obtener un pedido\033[0m',
+                'name': '\033[1;31m Obtener detalle de pedido\033[0m',
                 'user_type': ['Admin', 'Empleado'],
                 'inputs': [
                     {
@@ -469,7 +469,7 @@ if __name__ == "__main__":
             },
             {
                 'id': 'ser26',
-                'name': '\033[1;31m Obtener detalle de pedido\033[0m \n------------------------------------------------------------',
+                'name': '\033[1;31m Obtener pedidos\033[0m \n------------------------------------------------------------',
                 'user_type': ['Admin', 'Empleado'],
                 'inputs': [
                     {
